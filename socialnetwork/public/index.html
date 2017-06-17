@@ -1,0 +1,92 @@
+<htm>
+    <head>
+        <title>SocialNetwork</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/core.css">
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/pages.css">       
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/morris.css">
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/Controller.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="Ctrl">
+        <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Social Network</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <label for="login"></label> 
+                  <input type="text" class="form-control" ng-model="lg.login" placeholder="login">  
+              </li>
+              <li> <label for="">&nbsp; &nbsp;</label> </li>
+               <li>
+                  <label for="password"></label> 
+                  <input type="password" class="form-control" ng-model="lg.password" placeholder="*******">    
+              </li>
+              <li> <label for="">&nbsp; &nbsp;</label> </li>
+              <li style="padding-top: 7px"><button class="btn btn-default" ng-click="authentificate()">Log in</button></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Welcome To My Social Network</h2>
+                 <p>this is my first try for a lil nodejs practice</p>
+            </div>
+            <div class="col-md-6" style="padding-top: 10px">
+                   <h4 class="m-t-0 header-title"><b>Register</b></h4>					
+					<form class="form-horizontal" role="form">
+                        <div class="form-group">
+	                        <label for="inputEmail3" class="col-sm-3 control-label">Name</label>
+	                        <div class="col-sm-9">
+	                            <input type="text" class="form-control" ng-model="user.name" id="inputEmail3" placeholder="Name">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="inputEmail3" class="col-sm-3 control-label">login</label>
+	                        <div class="col-sm-9">
+	                            <input type="text" class="form-control" ng-model="user.login" id="inputEmail3" placeholder="Login">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+	                        <div class="col-sm-9">
+	                           <input type="password" class="form-control" ng-model="user.password" id="inputPassword3" placeholder="Password">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="inputPassword4" class="col-sm-3 control-label">Re Password</label>
+	                        <div class="col-sm-9">
+	                             <input type="password" class="form-control" ng-model="repassword" id="inputPassword4" placeholder="Retype Password">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="form-group m-b-0">
+	                            <div class="col-sm-offset-3 col-sm-9">
+	                                <button type="submit" ng-click="register()" class="btn btn-info waves-effect waves-light">register</button>
+	                            </div>
+	                         </div>
+	                </form>
+                </div>
+           
+        </div>
+    </div>
+        
+    </body>
+</htm>

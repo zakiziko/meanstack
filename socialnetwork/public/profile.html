@@ -1,0 +1,194 @@
+<htm>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/core.css">
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/pages.css">       
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/morris.css">
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/Controller.js"></script>
+        <script src="scripts/jquery-1.6.4.js"></script>
+        <script src="scripts/jquery.min.js"></script>
+        <script src="scripts/bootstrap.min.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="profile">
+          <div class="navbar navbar-default">
+      <div class="container"> 
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Social Network</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+              <li><a href="profile.html" class="waves-effect waves-light">profile</a></li>
+              <li><a href="acceuil.html" class="waves-effect waves-light">Acceuil</a></li>
+          </ul>
+          <form role="search" class="navbar-left app-search pull-left hidden-xs">
+			   <input type="text" placeholder="Search..." class="form-control">
+			    <a href=""><i class="md md-search"></i></a>
+		  </form>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown top-menu-item-xs">
+                   <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">
+                          <i class="md md-notifications"></i> <span class="badge badge-xs badge-danger">{{nbrNotif}}</span>
+                  </a>
+               <ul class="dropdown-menu dropdown-menu-lg">
+                <li class="notifi-title"><span class="label label-default pull-right">new {{nbrNotif}}</span>friendship request</li>
+                  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 230px;">
+                      <li class="list-group slimscroll-noti notification-list" style="overflow: hidden; width: auto; height: 230px;">
+                   <!-- list item-->
+                       <div class="media" ng-repeat="f in friendrequest">
+                         <div class="media-body">    
+                             <h4></h4>
+                             <table class="table">
+                                 <tr>
+                                     <td>{{f.name}}</td>
+                                     <td><a href="#" ng-click="accept(f._id)" class="table-action-btn"><i class="md md-done"></i></a></td>
+                                     <td><a href="#" ng-click="refuse(f._id)" class="table-action-btn"><i class="md md-clear"></i></a></td>
+                                 </tr>
+                             </table>
+                             
+                             
+                         </div>
+                    </div>
+                 
+                <!-- list item-->
+           </li>
+           <div class="slimScrollBar" style="background: rgb(152, 166, 173); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 151.576px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+           <li>
+               <a href="javascript:void(0);" class="list-group-item text-right">
+                    <small class="font-600">See all notifications</small>
+               </a>
+           </li>
+        </ul>
+         </li>
+         <li><label for="">&nbsp; &nbsp;</label></li>
+              <li style="padding-top: 7px">
+                  <button class="btn btn-default" ng-click="logout()">Log out</button>
+              </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div>
+        <div class="row" style="padding: 6px">
+            <div class="col-md-7">
+                <div class="widget-bg-color-icon card-box fadeInDown animated">
+                   <div class="text-left">
+                        <h3 class="text-dark"><b class="counter">profile</b></h3>
+                        <p class="text-muted">Welcome Mr {{name}}</p>
+                   </div>
+                   <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row" style="padding: 10px">
+            <div class="col-md-2">
+                   <div class="row">
+                    <div class="widget-bg-color-icon card-box fadeInDown animated">
+                    <div class="bg-icon bg-icon-purple pull-left">
+                         <i class="md md-account-child text-custom"></i>
+                    </div>
+                   <div class="text-right">
+                        <h3 class="text-dark"><b class="counter">Friends</b></h3>
+                        <p class="text-muted">{{frinedNumber}}</p>
+                   </div>
+                   <div class="clearfix"></div>
+                 </div>
+              </div> 
+              <div class="row">
+                  <div class="widget-bg-color-icon card-box fadeInDown animated">
+                       <div class="bg-icon bg-icon-info pull-left">
+                         <i class="md md-public text-info"></i>
+                      </div> 
+                      <div class="text-right">
+                        <h3 class="text-dark"><b class="counter">Activites</b></h3>
+                        <p class="text-muted">{{pubNumber}} Publication</p>
+                      </div>
+                   <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="input-group">
+                      <input type="text" id="example-input2-group2" ng-model="content" name="example-input2-group2" class="form-control" placeholder="What is in your mind">
+                       <span class="input-group-btn">
+                            <button type="button" class="btn waves-effect waves-light btn-primary" ng-click="addpub()">publicate</button>
+                      </span>
+                   </div>
+                </div>
+                <div class="row" style="padding-top: 10px">
+                    <div class="portlet" ng-repeat="pub in publist">
+                    <div class="portlet-heading portlet-default">
+                        <h3 class="portlet-title">Publication</h3>
+                        <div class="portlet-widgets">
+                            <a href="#" data-toggle="modal" data-target="#con-close-modal" ng-click="edit(pub._id)"><i class=" md-mode-edit"></i></a>
+                            <span class="divider"></span>
+                           <a href="#" ng-click="deletPub(pub._id)" data-toggle="remove"><i class="ion-close-round"></i></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="pid" class="panel-collapse collapse in">
+                        <div class="portlet-body">
+                            <p>{{pub.content}}</p> 
+                        </div>
+                    </div>
+                   </div>
+                </div> 
+                 
+            </div>
+            <div class="col-md-3">
+                <div class="list-group" style="width:238px ; position: fixed; top: 15%;right: 1%;">
+                     <a href="#" class="list-group-item active" >
+                        <h4 class="list-group-item-heading">Friend List</h4>
+                     </a>
+                     <a href="#" ng-repeat="fr in friendlist" class="list-group-item">
+                         <span ng-show="fr.actif"><h4 class="list-group-item-heading"><i class="md md-account-circle" style="color: green"></i>{{fr.name}}</h4></span>
+                         <span ng-show="!fr.actif"><h4 class="list-group-item-heading"><i class="md md-account-circle" style="color: darkgray"></i>{{fr.name}}</h4></span>       
+                     </a>
+                </div>
+            </div>
+        </div>    
+           
+    </div>
+    <!-- this is the update Model-->
+         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Update Statue</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label" for="inputDefault">Statue</label>
+                            <input type="text" class="form-control" id="login" ng-model="statue">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-info waves-effect waves-light" data-dismiss="modal" ng-click="update()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   <!-- this is the update Model-->   
+        <footer>
+            <hr>
+            <p>Social Network Test Copyright 2017@</p>
+        </footer>
+    </body>
+</htm>

@@ -1,0 +1,130 @@
+<htm>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/core.css">
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/pages.css">       
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/morris.css">
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/Controller.js"></script>
+        <script src="scripts/jquery-1.6.4.js"></script>
+        <script src="scripts/jquery.min.js"></script>
+        <script src="scripts/bootstrap.min.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="profile">
+          <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Social Network</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+              <li><a href="profile.html" class="waves-effect waves-light">profile</a></li>
+              <li><a href="#" class="waves-effect waves-light">Acceuil</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+              <li style="padding-top: 7px">
+                  <button class="btn btn-default" ng-click="logout()">Log out</button></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div>
+        <hr>
+        <div class="row">
+            <div class="col-md-2" style="padding: 5px">
+                <div class="row">
+                    <div class="widget-bg-color-icon card-box fadeInDown animated">
+                       <div class="text-left">
+                        <h3 class="text-dark"><b class="counter">profile</b></h3>
+                        <p class="text-muted">Welcome Mr {{name}}</p>
+                       </div>
+                        <div class="clearfix"></div>
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="widget-bg-color-icon card-box fadeInDown animated">
+                    <div class="bg-icon bg-icon-purple pull-left">
+                         <i class="md md-account-child text-custom"></i>
+                    </div>
+                   <div class="text-right">
+                        <h3 class="text-dark"><b class="counter">Friends</b></h3>
+                        <p class="text-muted">{{frinedNumber}}</p>
+                   </div>
+                   <div class="clearfix"></div>
+                 </div>
+              </div> 
+              <div class="row">
+                  <div class="widget-bg-color-icon card-box fadeInDown animated">
+                       <div class="bg-icon bg-icon-info pull-left">
+                         <i class="md md-public text-info"></i>
+                      </div> 
+                      <div class="text-right">
+                        <h3 class="text-dark"><b class="counter">Activites</b></h3>
+                        <p class="text-muted">{{pubNumber}} Publication</p>
+                      </div>
+                   <div class="clearfix"></div>
+                </div>
+              </div>       
+           </div>
+           <div class="col-sm-1"></div>
+            <div class="col-md-4">
+                <div class="row" style="padding-bottom: 15px">
+                    <div class="input-group">
+                        <input type="text" id="example-input2-group2" ng-model="content" name="example-input2-group2" class="form-control" placeholder="What is in your mind">
+                       <span class="input-group-btn">
+                            <button type="button" class="btn waves-effect waves-light btn-primary" ng-click="addpub()">publicate</button>
+                      </span>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="pub in frinedspubtest">
+                    <div class="card-box">
+                        <h3>{{pub.creator}}</h3>
+                        {{pub.content}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-md-4" style="border-block-end-style: solid ">
+                <div class="row">
+                    <div>
+                        <div class="card-box" style="width: 170px">
+                            <h5 class="text-dark header-title m-t-0">People You May Know</h5>
+                               <ul class="list-group" ng-repeat="friend in PossibleFriend">
+                                   <li class="list-group-items">
+                                       {{friend.name}}
+                                      <a href="#" class="md md-person-add" ng-click="sendRequest(friend._id)">add friend</a>
+                                  </li>
+                                </ul>
+                         </div> 
+                     </div>
+                     <div>
+                         <div class="list-group" style="width:238px ; position: fixed; top: 15%;right: 1%;">
+                              <a href="#" class="list-group-item active" >
+                                 <h4 class="list-group-item-heading">Friend List</h4>
+                             </a>
+                              <a href="#" ng-repeat="fr in friendlist" class="list-group-item">
+                                <span ng-show="fr.actif"><h4 class="list-group-item-heading"><i class="md md-account-circle" style="color: green"></i>{{fr.name}}</h4></span>
+                                <span ng-show="!fr.actif"><h4 class="list-group-item-heading"><i class="md md-account-circle" style="color: darkgray"></i>{{fr.name}}</h4></span>       
+                             </a>
+                          </div>
+                    </div>
+                </div>              
+            </div>
+       </div> 
+        <footer>
+            <hr>
+            <p>Social Network Test Copyright 2017@</p>
+        </footer>
+    </body>
+</htm>
